@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Buddy Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+
+<body onload="startbasicfunctions()" onclick="getUserIDFromDatabase()">
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+
+
+
+    <div class="topbar">
+        <img class="logo" src="images/TBF.svg" alt="logo">
+        <h2>Travel Buddy Finder</h2>
+
+        <button id="account-section-button" onclick="showaccountdetails()"><i class="fas fa-user"></i></button>
+
+    </div>
+
+    </div><br><br><br><br>
+
+    <center>
+        <div class="account-section">
+            <button class="account-section-close-button" onclick="hideaccountdetails()"><i
+                    class="fas fa-x"></i></button>
+            <div style="width: 90%; height: 1.5px; background: #000; margin-top: 55px;"></div>
+
+            <div class="profile">
+                <center><br>
+                    <img src="" id="profilepicture">
+                    <h1 id="nameshowing"></h1>
+                    <h3 id="phonenoshowing"></h3>
+                    <h3 id="personalityshowing"></h3>
+                    <h3 id="ageshowing"></h3>
+                    <h3 id="vegnonvegshowing"></h3>
+                    <div style="width: 90%; height: 1.5px; background: #000; margin-top: 35px;"></div><br>
+                    <a href="signup.html"><button>Signup !</button></a>
+                </center>
+            </div>
+
+
+        </div>
+    </center>
+
+
+    <!-- HomePage Area Where All The Things Will Show -->
+    <div class="homepage">
+        <center>
+
+            <div class="greetings">
+                <center>
+                    <h2 id="greetuser"></h2>
+                </center>
+            </div>
+
+
+
+            <div
+                style="width: 40%; height: 1.5px; background: #000; margin-top: -10px; border-radius: 2px solid black;">
+            </div>
+            <br><br><br><br>
+
+            <div class="personalitytest" onclick="showpersonalitytestdialogbox()">
+                <center>
+                    <h1 style="color: #1D2729;">Give Your Personality Type &nbsp; <i
+                            class="fa fa-arrow-right fa-shake"></i></h1>
+                </center>
+            </div>
+
+
+            <div class="popupofpersonalitytest">
+
+
+                <button class="personalitytest-close-button" onclick="hidepersonalitytest()"><i
+                        class="fas fa-x"></i></button>
+                <div style="width: 90%; height: 1.5px; background: #000; margin-top: 55px;"></div>
+                <br>
+
+                <center>
+                    <a href="https://www.16personalities.com/free-personality-test" target="_blank"><button>Give Test
+                            📜</button></a>
+                    <br>
+                    <h5 style="width: 280px; text-align: left;"><u>Steps</u> : Click on "Give Test." Button Above ! ,
+                        You will be redirected to the { 16 Personality Test } webpage, where you can answer some
+                        questions. After giving all the answers, you will find your personality. Just come back, enter
+                        it in the input field below, and click on the " Save / Update " Button.</h5>
+                    <br>
+                    <input type="text" id="personalitytestinputfield"
+                        placeholder="Enter You Personality Type : Ex : INFJ">
+
+                    <button class="personalitysubmitbtn" id="save-personality-test" onclick="savepersonalitytest()">Save
+                        / Update ☢️ <i class="fas fa-arrow-right fa-shake"></i></button>
+                </center>
+            </div>
+
+
+
+
+            <div class="tripplanboxbtn" onclick="showtriplanerbox()">
+                <center>
+                    <h1 style="color: #1D2729;">Plan Your New Trip &nbsp; <i class="fa fa-arrow-down fa-shake"></i></h1>
+                </center>
+            </div>
+
+            <div class="tripplanbox">
+                <center>
+                    <center>
+                        <h1 style="color: #1D2729;">Plan Your New Trip ✈️</h1>
+                    </center>
+                    <center>
+                        <div
+                            style="width: 70%; height: 1.5px; background: #000; margin-top: -10px; border-radius: 2px solid black;">
+                        </div><br>
+                    </center>
+                    <br>
+                    <label for="startdateoftrip">Pick Start Date Of Trip : </label>
+                    <input type="date" id="startdateoftrip">
+                    <br>
+                    <label for="enddateoftrip">Pick End Date Of Trip : </label>
+                    &nbsp;<input type="date" id="enddateoftrip">
+                    <br>
+                    <label for="sourcestartpoint">Source Of Journey : </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="sourcestartpoint"
+                        placeholder="Delhi , Mumbai etc .">
+                    <br>
+                    <label for="sourceendpoint">Destination Of Journey : </label>
+                    <input type="text" id="sourceendpoint" placeholder="Delhi , Mumbai etc .">
+                    <br>
+                    <label for="budgetoftrip">Budget Of Trip : </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="budgetoftrip"
+                        placeholder="Ex : 💲1000">
+                    <br>
+                    <label for="foodintripshouldbe">According To Profile : </label>&nbsp;&nbsp;
+                    <input type="text" id="foodintripshouldbe" value="Vegetarian" disabled>
+                    <br>
+                    <label for="noofpeoplesintrip">No Of Peoples Coming : </label>
+                    <input type="number" id="noofpeoplesintrip" placeholder="Ex : 5">
+                    <br>
+                    <center><button onclick="findpeoplesandsavetrip()">Submit 🤗</button></center>
+
+                </center>
+            </div>
+
+        </center>
+
+
+    </div>
+    <!-- HomePage Area Where All The Things Will Show -->
+
+
+
+
+    <script src="script.js"></script>
+    <!-- <script src="usertrip.js"></script>
+    <script src="test.js"></script> -->
+</body>
+
+</html>
