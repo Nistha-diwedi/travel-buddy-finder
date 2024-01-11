@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <title>Travel Buddy Finder || Signup</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0 10px;
+      background: url(images/landscape3.jpg) no-repeat;
+      background-size: cover;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .signup {
+      width: 300px;
+      height: 450px;
+      backdrop-filter: blur(20px);
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 15px;
+      color: #fff;
+    }
+
+    .signup h1{
+      color: #aae6fa;
+    font-size: 35px;
+    background-image: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%);
+    display: inline-block;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    }
+
+    .signup .hr {
+      margin-top: -10px;
+      margin-bottom: 10px;
+      width: 85%;
+      height: 2px;
+      background: white;
+    }
+
+    .signup .profilePicture {
+      display: inline-block;
+      background-color: rgb(255, 96, 96);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .signup input {
+      width: 220px;
+      height: 25px;
+      border: none;
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+
+    .signup button {
+      width: 120px;
+      height: 35px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    #users img {
+      height: 100px;
+      width: 100px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+
+
+  <div class="signup">
+
+    <center>
+      <h1>Signup</h1>
+      <div class="hr"></div>
+      <input type="file" id="profilePicture" hidden><br>
+      <label class="profilePicture" for="profilePicture" onclick="changetogreen()">Choose Profile Picture .</label>
+      <input type="text" id="name" placeholder="Enter Full Name"><br>
+      <input type="number" id="phone_number" placeholder="Enter Phone Number"><br>
+      <input type="number" id="age" placeholder="Enter Your Age"><br>
+      <input type="text" id="vegnonveg" placeholder="Enter Veg / Non-veg"><br>
+      <button onclick="saveUserInfo()">Submit 🤗</button>
+      <a href="index.html"><button>Homepage</button></a>
+    </center>
+
+  </div>
+
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
