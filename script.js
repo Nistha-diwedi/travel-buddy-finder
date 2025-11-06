@@ -1,13 +1,13 @@
 // Initialize Firebase
 var tbffirebase = {
-  apiKey: "AIzaSyAmw_LYg61dZ_WRRO73sKwQgNLxquqpUNc",
-  authDomain: "travel-buddy-finder-2d06e.firebaseapp.com",
-  databaseURL: "https://travel-buddy-finder-2d06e-default-rtdb.firebaseio.com",
-  projectId: "travel-buddy-finder-2d06e",
-  storageBucket: "travel-buddy-finder-2d06e.appspot.com",
-  messagingSenderId: "951098257369",
-  appId: "1:951098257369:web:fd1dbe8baa0f79876d73c8",
-  measurementId: "G-E13V3MZ4HB"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: ""
 };
 
 firebase.initializeApp(tbffirebase);
@@ -212,4 +212,5 @@ nameshowing.innerText = nameofuserdisplay;
 phonenoshowing.innerText = "Phone no : " + phonenoofuserdisplay;
 personalityshowing.innerText = "Personality : " + personalityofuserdisplay;
 ageshowing.innerText = "Age : " + ageofuserdisplay + " Years";
+
 vegnonvegshowing.innerText = userfoodtastedisplay;
