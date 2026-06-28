@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "travel-buddy-finder",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-06-01",
+
+  // Serve the static frontend from ./public, but run the Worker first for /api/*
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+
+  // D1 database binding. Fill in "database_id" after running:  npm run db:create
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "travel-buddy-db",
+      "database_id": "e063b8d3-b97c-4a5b-8c48-bb952fc46ffa",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

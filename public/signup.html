@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Buddy Finder · Sign up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --accent: #f97316;
+      --ink: #0f172a;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: "Poppins", system-ui, sans-serif;
+      color: var(--ink);
+      background: url("images/landscape2.jpg") center/cover no-repeat fixed;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, .5), rgba(13, 148, 136, .6));
+    }
+    .signup {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 22px;
+      padding: 32px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .35);
+      text-align: center;
+    }
+    .signup h1 {
+      margin: 0 0 4px;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .signup .tagline { color: var(--muted); margin: 0 0 22px; font-size: 14px; }
+
+    .profilePicture {
+      display: inline-block;
+      background: #ecfdf5;
+      color: var(--primary-dark);
+      border: 1.5px dashed var(--primary);
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .profilePicture.chosen { background: var(--primary); color: #fff; border-style: solid; }
+
+    .signup input[type="text"],
+    .signup input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      margin-top: 12px;
+      outline: none;
+      transition: border .15s ease, box-shadow .15s ease;
+    }
+    .signup input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(13, 148, 136, .2); }
+
+    .signup .actions { display: grid; gap: 10px; margin-top: 20px; }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background .15s ease, transform .15s ease;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid #cbd5e1;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: block;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .existing-profiles { margin-top: 22px; border-top: 1px solid #e2e8f0; padding-top: 16px; }
+    .switch-label { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+    .switch-user {
+      background: #ecfdf5;
+      color: var(--primary-dark);
+      border: 1px solid #99f6e4;
+      padding: 7px 14px;
+      margin: 4px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .switch-user:hover { background: var(--primary); color: #fff; }
+  </style>
+</head>
+
+<body>
+  <div class="signup">
+    <h1>Join the journey ✈️</h1>
+    <p class="tagline">Create your traveller profile</p>
+
+    <input type="file" id="profilePicture" accept="image/*" hidden />
+    <label class="profilePicture" for="profilePicture" onclick="changetogreen()">
+      <i class="fas fa-camera"></i> &nbsp;Choose profile picture
+    </label>
+
+    <input type="text" id="name" placeholder="Full name" />
+    <input type="number" id="phone_number" placeholder="Phone number" />
+    <input type="number" id="age" placeholder="Age" />
+    <input type="text" id="vegnonveg" placeholder="Food preference (Veg / Non-veg)" />
+
+    <div class="actions">
+      <button class="btn-primary" onclick="saveUserInfo()">Create profile 🎒</button>
+      <a href="index.html"><button class="btn-ghost" style="width:100%">Back to home</button></a>
+    </div>
+
+    <div id="existing-profiles" class="existing-profiles"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Buddy Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body onload="startbasicfunctions()">
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar">
+    <div class="brand"><span class="logo-mark">🧭</span> Travel&nbsp;Buddy&nbsp;Finder</div>
+    <button class="profile-btn" onclick="showaccountdetails()" title="Your profile">
+      <i class="fas fa-user"></i>
+    </button>
+  </nav>
+
+  <!-- ===== Account drawer ===== -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="hideaccountdetails()"></div>
+  <aside class="account-section" id="account-section">
+    <button class="drawer-close" onclick="hideaccountdetails()"><i class="fas fa-xmark"></i></button>
+    <div class="profile">
+      <img src="" id="profilepicture" alt="profile" />
+      <h2 id="nameshowing"></h2>
+      <p id="phonenoshowing"></p>
+      <p id="personalityshowing"></p>
+      <p id="ageshowing"></p>
+      <p id="vegnonvegshowing"></p>
+    </div>
+    <div class="drawer-actions">
+      <a href="signup.html"><button class="btn-primary">Sign up / Switch user</button></a>
+      <button class="btn-ghost" onclick="logout()">Logout</button>
+    </div>
+  </aside>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="greetuser">Find your perfect travel buddy 🌍</h1>
+      <p class="hero-sub">
+        Match with travellers heading to the same place, on the same dates,
+        with a similar budget &amp; vibe — then go explore together.
+      </p>
+      <button class="cta" onclick="scrollToPlan()">Plan a trip <i class="fas fa-arrow-down"></i></button>
+    </div>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main class="container">
+
+    <!-- Feature cards -->
+    <section class="cards">
+      <div class="card" onclick="showpersonalitytestdialogbox()">
+        <div class="card-icon">🧠</div>
+        <h3>Set Your Personality</h3>
+        <p>Take the free 16-personalities test and add your type for smarter buddy matching.</p>
+        <span class="card-link">Add it <i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="card" onclick="scrollToPlan()">
+        <div class="card-icon">🗺️</div>
+        <h3>Plan Your Trip</h3>
+        <p>Tell us your dates, destination and budget. We'll find buddies that fit.</p>
+        <span class="card-link">Start planning <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </section>
+
+    <!-- Personality modal -->
+    <div class="modal" id="personality-modal">
+      <div class="modal-box">
+        <button class="modal-close" onclick="hidepersonalitytest()"><i class="fas fa-xmark"></i></button>
+        <h2>Your Personality Type</h2>
+        <a href="https://www.16personalities.com/free-personality-test" target="_blank" rel="noopener">
+          <button class="btn-primary">Take the free test 📜</button>
+        </a>
+        <p class="modal-help">
+          Click the button, answer the questions on 16Personalities, then come
+          back, type your 4-letter result below and save it.
+        </p>
+        <input type="text" id="personalitytestinputfield" maxlength="4"
+          placeholder="e.g. INFJ" />
+        <button class="btn-primary block" id="save-personality-test"
+          onclick="savepersonalitytest()">Save personality 🧠</button>
+      </div>
+    </div>
+
+    <!-- Trip planner -->
+    <section id="plan" class="planner">
+      <h2>Plan Your New Trip ✈️</h2>
+      <p class="planner-sub">Fill the details and we'll instantly find your matches.</p>
+
+      <div class="form-grid">
+        <label>Start date
+          <input type="date" id="startdateoftrip" />
+        </label>
+        <label>End date
+          <input type="date" id="enddateoftrip" />
+        </label>
+        <label>From
+          <input type="text" id="sourcestartpoint" placeholder="Delhi, Mumbai…" />
+        </label>
+        <label>To
+          <input type="text" id="sourceendpoint" placeholder="Manali, Goa…" />
+        </label>
+        <label>Budget (₹)
+          <input type="number" id="budgetoftrip" placeholder="e.g. 15000" />
+        </label>
+        <label>Food preference
+          <input type="text" id="foodintripshouldbe" value="Vegetarian" disabled />
+        </label>
+        <label>Group size
+          <input type="number" id="noofpeoplesintrip" placeholder="e.g. 4" />
+        </label>
+      </div>
+
+      <button class="btn-primary block big" onclick="findpeoplesandsavetrip()">
+        Find My Buddies 🤝
+      </button>
+    </section>
+
+    <!-- Matches -->
+    <section id="matches-section" class="matches-section" style="display:none;">
+      <h2 id="matches-heading"></h2>
+      <div id="matches-list" class="matches-list"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">Made with ❤️ for travellers · Travel Buddy Finder</footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
